@@ -1,0 +1,52 @@
+#include <cassert>
+#include <iostream>
+#include "queue.h"
+
+//
+// main.cc serves as a driver for the program.  Use it to run various
+// test cases against your implementation
+//
+
+int
+main(int argc, char **argv)
+{
+	ElementTypePtr e = NULL;
+	CircularQueuePtr q = NULL;
+	int i, result;
+
+	std::cout << "Create new queue\n";
+	q = new(CircularQueue);
+	assert(q != NULL);
+	std::cout << *q << "\n";
+
+	for (i = 0; i < 10; i++) {
+		e = new(ElementType);
+		assert(e != NULL);
+		*e = i;
+
+		std::cout << "\nInsert element " << *e << " in queue\n";
+		result = q->Enqueue(e);
+		if (result != 0)
+			std::cout << "Enqueue failed\n";
+		else
+			std::cout << *q << "\n";
+	}
+
+	//dequeing the entire queue
+	for (i=0; i<10; i++)
+	  {
+	    e = new(ElementType);
+	    assert(e != NULL);
+	    *e = i;
+
+	    std::cout << "\n Delete an element  "<<*e<< " in queue\n";
+	    result = q->Dequeue(e);
+	    if (result != 0)
+	      std::cout<<"Dequeue Failed\n";
+	    else 
+	      std::cout<< *q << "\n";
+	  }
+
+	 
+	return 0;
+}
