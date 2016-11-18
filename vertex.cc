@@ -4,6 +4,8 @@
 // Flag indicating whether the random number generated has been seeded
 static int seeded = 0;
 
+
+//seeded???
 vertexid_t vertexid_rand()
 {
 	if (!seeded) {
